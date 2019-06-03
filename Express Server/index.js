@@ -19,7 +19,7 @@ const checkIfAuthenticated = expressJwt({
 });
 
 const signOptions = {
-  expiresIn: "10s",
+  expiresIn: "30d",
   algorithm: 'ES256'
 };
 
