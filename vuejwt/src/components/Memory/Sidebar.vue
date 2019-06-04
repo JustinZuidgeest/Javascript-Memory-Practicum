@@ -25,6 +25,16 @@
           <option value=4>4</option>
           <option value=6 selected>6</option>
         </select>
+        <br><br><br><br><br><br>
+        Kaartkleuren:<br><br>
+        <div class="color-bar">
+            <span class="color-label">Achterkant:</span>
+            <input class="color-input" type="color" name="cardcolor" id="cardcolor" v-model="cardColor">
+            <span class="color-label">Open:</span>
+            <input class="color-input" type="color" name="opencolor" id="opencolor" v-model="openColor">
+            <span class="color-label">Gevonden:</span>
+            <input class="color-input" type="color" name="foundcolor" id="foundcolor" v-model="foundColor">
+        </div>
       </td>
     </tr>
     <tr>
@@ -44,7 +54,10 @@ export default {
     return {
       darkTheme: false,
       cardCharacter: "*",
-      boardSize: 6
+      boardSize: 6,
+      cardColor: "#42b983",
+      openColor: "#d24ed6",
+      foundColor: "#b95e42"
     }
   },
   mounted: function() {
@@ -82,5 +95,21 @@ button {
 
 button:hover{
   background: #666666;
+}
+
+.color-bar{
+    display: grid;
+    grid-template-columns: 150px auto;
+    grid-row-gap: 15px;
+}
+
+.color-input{
+    width: 50%;
+    cursor: pointer;
+    border: none;
+    -webkit-appearance: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
 }
 </style>

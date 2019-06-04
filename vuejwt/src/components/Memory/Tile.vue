@@ -36,7 +36,7 @@ td.inactive {
 
 td.active {
   cursor: pointer;
-  background-color: rgb(210, 78, 214);
+  background-color: #d24ed6;
   border-radius: 10px;
 }
 
