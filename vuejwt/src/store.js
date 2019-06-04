@@ -53,7 +53,7 @@ export default new Vuex.Store({
     postLogin(context, vars){
       return new Promise((resolve, reject) => {
         axios.post('/login', {
-          name: vars.username,
+          name: vars.email,
           password: vars.password,
         })
         .then(response => {
@@ -77,10 +77,10 @@ export default new Vuex.Store({
         .catch(error => {
           context.dispatch('unsetToken')
           .then(response => {
-            console.log("Token removal response: " + response)
+            console.log(response);
           })
           .catch(error => {
-            console.log("Token removal error: " + error)
+            console.log("Token removal error: " + error);
           })
           reject(error.response);
         })

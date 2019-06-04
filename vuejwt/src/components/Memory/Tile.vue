@@ -30,18 +30,18 @@ export default {
 <style scoped>
 td.inactive {
   cursor: pointer;
-  background-color: #42b983;
+  background-color: var(--inactive-color);
   border-radius: 10px;
 }
 
 td.active {
   cursor: pointer;
-  background-color: #d24ed6;
+  background-color: var(--active-color);
   border-radius: 10px;
 }
 
 td.found {
-  background-color: #b95e42;
+  background-color: var(--found-color);
   cursor: default;
   border-radius: 10px;
 }

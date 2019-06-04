@@ -37,6 +37,9 @@ export default {
     return{
       allowed: false,
       errormsg: "401: You are not authorized to see this content",
+      cardColor: "#42b983",
+      openColor: "#d24ed6",
+      foundColor: "#b95e42",
 
       startTime: null,
       totalTime: 0,
@@ -79,7 +82,6 @@ export default {
     })
     .catch( error => {
       this.allowed = false;
-      console.log(error);
     })
   },
   methods: {
@@ -268,7 +270,7 @@ export default {
   }
 
   .else-guard{
-    color: rgb(168, 23, 23);
+    color: rgb(255, 0, 0);
     padding-top: 40px;
   }
 </style>

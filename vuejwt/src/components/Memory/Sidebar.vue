@@ -29,11 +29,11 @@
         Kaartkleuren:<br><br>
         <div class="color-bar">
             <span class="color-label">Achterkant:</span>
-            <input class="color-input" type="color" name="cardcolor" id="cardcolor" v-model="cardColor">
+            <input class="color-input" type="color" name="cardcolor" id="cardcolor" v-model="cardColor" @change="colorChanged">
             <span class="color-label">Open:</span>
-            <input class="color-input" type="color" name="opencolor" id="opencolor" v-model="openColor">
+            <input class="color-input" type="color" name="opencolor" id="opencolor" v-model="openColor" @change="colorChanged">
             <span class="color-label">Gevonden:</span>
-            <input class="color-input" type="color" name="foundcolor" id="foundcolor" v-model="foundColor">
+            <input class="color-input" type="color" name="foundcolor" id="foundcolor" v-model="foundColor" @change="colorChanged">
         </div>
       </td>
     </tr>
@@ -59,6 +59,13 @@ export default {
       openColor: "#d24ed6",
       foundColor: "#b95e42"
     }
+  },
+  methods: {
+    colorChanged() {
+      document.documentElement.style.setProperty('--inactive-color', this.cardColor);
+      document.documentElement.style.setProperty('--active-color', this.openColor);
+      document.documentElement.style.setProperty('--found-color', this.foundColor);
+    },
   },
   mounted: function() {
     this.$emit("newGame", this.cardCharacter, this.boardSize);

@@ -4,7 +4,7 @@
 
     <form action="#" @submit.prevent="login">
       <label for="username">Username</label>
-      <input type="text" name="username" id="username" v-model="username">
+      <input type="text" name="username" id="username" v-model="email">
 
       <label for="username">Password</label>
       <input type="password" name="password" id="password" v-model="password">
@@ -24,19 +24,37 @@ export default {
   name: 'login',
   data: function(){
     return{
-      username: "",
+      email: "",
       password: "",
-      error: ""
+      error: "",
     }
   },
   methods: {
     login(){
-      //TODO: Sanitize initial input
-      this.requestToken();
+      this.error="";
+      if(this.checkInput()){
+        this.requestToken();
+      }
+    },
+    checkInput(){
+      if(!this.validateEmail()){
+        this.error = "Not a valid email!"
+        return false;
+      }else if(this.password.length < 5){
+        this.error = "Password must be more than 5 characters"
+        return false;
+      }else{
+        return true;
+      }
+    },
+    validateEmail(){
+      //Based on RFC 5322. Credit to https://emailregex.com/
+      let email = this.email;
+      return (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test( email ));
     },
     requestToken(){
       this.$store.dispatch('postLogin', {
-        username: this.username,
+        email: this.email,
         password: this.password,
       })
       .then(response => {

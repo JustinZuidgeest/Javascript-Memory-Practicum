@@ -6,9 +6,8 @@ const jwt = require("jsonwebtoken");
 const expressJwt = require('express-jwt');
 
 const users = [
-  { id: 1, name: 'bart', password: 'henker' },
-  { id: 2, name: 'test', password: 'test' },
-  { id: 3, name: 'henk', password: 'de tank'}
+  { id: 1, name: 'test@test.nl', password: 'testtest' },
+  { id: 2, name: 'henk@detank.nl', password: 'henkdetank'}
 ];
 
 const privateKey = fs.readFileSync('./private.pem', 'utf8');
@@ -47,7 +46,7 @@ app.get('/api', (req, res) => {
 });
 
 app.post('/api/login', function (req, res) {
-  console.log("request for /api/login")
+  console.log("request for /api/login");
   if (req.body.name && req.body.password) {
     var name = req.body.name;
   }
