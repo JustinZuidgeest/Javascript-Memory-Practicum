@@ -14,7 +14,6 @@ export default {
       this.$router.push({path: '/'})
     })
     .catch(error => {
-      console.error(error);
       this.$router.push({path: '/'})
     })
   }
